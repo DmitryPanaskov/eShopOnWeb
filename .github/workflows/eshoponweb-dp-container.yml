@@ -1,13 +1,13 @@
-name: Build and deploy .NET application to container app eshoponweb-container-dp
+name: Build and deploy .NET application to container app eshoponweb-dp-container
 on:
   push:
     branches:
     - develop
 env:
-  CONTAINER_APP_CONTAINER_NAME: eshoponweb-container-dp
-  CONTAINER_APP_NAME: eshoponweb-container-dp
+  CONTAINER_APP_CONTAINER_NAME: web
+  CONTAINER_APP_NAME: eshoponweb-dp-container
   CONTAINER_APP_RESOURCE_GROUP_NAME: Learn
-  CONTAINER_REGISTRY_LOGIN_SERVER: containerregistrydp.azurecr.io
+  CONTAINER_REGISTRY_LOGIN_SERVER: azurecontainerregisterdp.azurecr.io
   DOCKER_FILE_PATH: src/Web/Dockerfile
   PROJECT_NAME_FOR_DOCKER: web
 jobs:
@@ -22,8 +22,8 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}
-        username: ${{ secrets.ContainerRegistryDP_USERNAME_FB1D }}
-        password: ${{ secrets.ContainerRegistryDP_PASSWORD_FB1D }}
+        username: ${{ secrets.azurecontainerregisterdp_USERNAME_DF98 }}
+        password: ${{ secrets.azurecontainerregisterdp_PASSWORD_DF98 }}
     - name: Build and push container image to registry
       uses: docker/build-push-action@v4
       with:
@@ -37,14 +37,14 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.eshoponweb_container_dp_SPN }}
+        creds: ${{ secrets.eshoponweb_dp_container_SPN }}
     - name: Deploy to containerapp
       uses: azure/CLI@v1
       with:
         inlineScript: >
           az config set extension.use_dynamic_install=yes_without_prompt
 
-          az containerapp registry set --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --server ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }} --username ${{ secrets.ContainerRegistryDP_USERNAME_FB1D }} --password ${{ secrets.ContainerRegistryDP_PASSWORD_FB1D }}
+          az containerapp registry set --name ${{ env.CONTAINER_APP_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --server ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }} --username ${{ secrets.azurecontainerregisterdp_USERNAME_DF98 }} --password ${{ secrets.azurecontainerregisterdp_PASSWORD_DF98 }}
 
           az containerapp update --name ${{ env.CONTAINER_APP_NAME }} --container-name ${{ env.CONTAINER_APP_CONTAINER_NAME }} --resource-group ${{ env.CONTAINER_APP_RESOURCE_GROUP_NAME }} --image ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.PROJECT_NAME_FOR_DOCKER }}:${{ github.sha }}
     - name: logout
