@@ -6,19 +6,21 @@
   <ItemGroup>
     <PackageVersion Include="Ardalis.ApiEndpoints" Version="4.0.1" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="4.0.1" />
-    <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="6.1.0" />
+    <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="7.0.0" />
     <PackageVersion Include="Ardalis.Result" Version="7.0.0" />
-    <PackageVersion Include="Ardalis.Specification" Version="6.1.0" />
+    <PackageVersion Include="Ardalis.Specification" Version="7.0.0" />
     <PackageVersion Include="Ardalis.ListStartupServices" Version="1.1.4" />
+    <PackageVersion Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+    <PackageVersion Include="Azure.Identity" Version="1.9.0-beta.2" />
     <PackageVersion Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageVersion Include="BlazorInputFile" Version="0.2.0" />
     <PackageVersion Include="Blazored.LocalStorage" Version="4.3.0" />
     <PackageVersion Include="BuildBundlerMinifier" Version="3.2.449" PrivateAssets="All" />
-    <PackageVersion Include="FluentValidation" Version="11.5.2" />
+    <PackageVersion Include="FluentValidation" Version="11.7.1" />
     <PackageVersion Include="MediatR" Version="12.0.1" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.10" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.8" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.10" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" PrivateAssets="all" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
@@ -41,7 +43,7 @@
     <PackageVersion Include="System.Net.Http.Json" Version="7.0.1" />
     <PackageVersion Include="System.Security.Claims" Version="4.3.0" />
     <PackageVersion Include="System.Text.Json" Version="7.0.2" />
-    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
