@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BlazorShared;
@@ -22,6 +22,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MinimalApi.Endpoint.Configurations.Extensions;
 using MinimalApi.Endpoint.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,7 +69,13 @@ builder.Services.AddAuthentication(config =>
         ValidateIssuer = false,
         ValidateAudience = false
     };
-});
+})
+    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"))
+        .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddMicrosoftGraph(builder.Configuration.GetSection("MicrosoftGraph"))
+            .AddInMemoryTokenCaches()
+            .AddDownstreamWebApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
+            .AddInMemoryTokenCaches();
 
 const string CORS_POLICY = "CorsPolicy";
 builder.Services.AddCors(options =>
@@ -80,6 +88,8 @@ builder.Services.AddCors(options =>
             corsPolicyBuilder.AllowAnyHeader();
         });
 });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
 
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
@@ -160,6 +170,8 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseCors(CORS_POLICY);
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
