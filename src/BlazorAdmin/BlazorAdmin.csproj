@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">	
+	<PropertyGroup>
+	  <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+	</PropertyGroup>	
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" />
 		<PackageReference Include="BlazorInputFile" />

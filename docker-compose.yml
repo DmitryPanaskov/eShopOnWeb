@@ -23,3 +23,10 @@ services:
       - SA_PASSWORD=@someThingComplicated1234
       - ACCEPT_EULA=Y
 
+
+  blazoradmin:
+    image: ${DOCKER_REGISTRY-}blazoradmin
+    build:
+      context: .
+      dockerfile: src/BlazorAdmin/Dockerfile
+
